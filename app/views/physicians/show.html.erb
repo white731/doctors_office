@@ -1,2 +1,11 @@
-<h1>Physicians#show</h1>
-<p>Find me in app/views/physicians/show.html.erb</p>
+<h1><%=@physician.name_title%></h1>
+<p>Name: <%=@physician.name%></p>
+<p>Title:<%=@physician.title%></p>
+<p>Specialty <%=@physician.specialty%></p>
+<br>
+<p><%=link_to "Appointments", physician_appointments_path(@physician)%></p>
+<br>
+<p><%=link_to "Edit", edit_physician_path(@physician)%></p>
+<p><%=link_to "Delete", physician_path(@physician), method: :delete%></p>
+
+

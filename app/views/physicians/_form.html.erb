@@ -1,0 +1,17 @@
+<h1><%= @physician.id ? 'Edit Physician' : 'Create Physician' %></h1>
+<h1>Add Physician</h1>
+<%= form_with(model: @physician, local: true, class: "ui form" ) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true, placeholder: "Full Name" %>
+  </div>
+   <div class="field">
+    <%= f.label :title %>
+    <%= f.select :title, ["RN","M.D.","PA","NP"]%>
+  </div>
+   <div class="field">
+    <%= f.label :specialty %>
+    <%= f.text_field :specialty, required: true, placeholder: "Specialty Name" %>
+  </div>
+  <%= f.submit nil, class: "ui blue button inverted" %>
+<% end %>
