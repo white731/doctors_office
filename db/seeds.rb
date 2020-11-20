@@ -27,6 +27,9 @@
 ######################## Real Seed Data ############################
 
 #create like 5 physicians
+
+require 'faker'
+
 physicians = []
 patients = []
 titles = ["RN","M.D.","PA","NP"]
