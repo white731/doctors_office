@@ -1,2 +1,11 @@
-<h1>Appointments#edit</h1>
-<p>Find me in app/views/appointments/edit.html.erb</p>
+<h1>Editing Appointment with <%=@physician.name%></h1>
+<%= 
+form_with( model: [@physician, @appointment], local:true, class:'ui form') do |f|%>
+<%= f.label :patient%>
+<%= f.select :patient_id, @patients.collect{ |u| [u.full_name, u.id]}%>
+<%= f.label :appointment_date%>
+<%= f.date_field :appointment_date, "data-provide" => 'datepicker'%>
+<br />
+<br>
+<%= f.submit nil, class:'ui green button'%>
+<% end %>

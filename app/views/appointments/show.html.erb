@@ -1,6 +1,13 @@
 <h1>Appointments for <%=@physician.name%></h1>
+<p><%= link_to "Back to All Appointments", physician_appointments_path(@physician) %></p>
+<br>
 <p>Full Name: <%=@patient.full_name%></p>
 <p>Age: <%=@patient.age%></p>
 <p>Phone #: <%=@patient.phone%></p>
 <p>Email: <%=@patient.email%></p>
 <p>Appointment Date: <%=@appointment.appointment_date%></p>
+<br>
+<p><%=link_to "Edit", edit_physician_appointment_path(@physician,@appointment)%>
+<p><%=link_to "Delete", physician_appointment_path(@physician,@appointment), method: :delete%>
+
+

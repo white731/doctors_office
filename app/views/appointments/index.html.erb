@@ -1,18 +1,12 @@
-<h1>All Physicians</h1>
+<h1><%=@physician.name%></h1>
+<p><%=link_to "back to physician profile",physician_path(@physician) %></p>
+<br>
 <p><%=link_to "New Appointment", new_physician_appointment_path(@physician)%></p>
 <ul>
 
 <% @appointments.each do |a| %>
 <li>
-<%= link_to "#{a.appointment_date}", physician_appointment_path(@physician,a)%> 
+<%= link_to "#{a.patient.first_name} - #{a.appointment_date}", physician_appointment_path(@physician,a)%> 
 </li>
 <%end%>
-
-<% @patients.each do |p| %>
-<li>
-<%= "#{p.full_name}"%> 
-</li>
-<%end%>
-
-
 </ul>
