@@ -1,0 +1,12 @@
+<h1><%=@patient.full_name%></h1>
+<p><%=link_to "back to patient profile",patient_path(@patient) %></p>
+<br>
+<p><%=link_to "New Appointment", new_patient_appointment_custom_path(@patient)%></p>
+<ul>
+
+<% @appointments.each do |a| %>
+<li>
+<%= link_to "#{a.physician.name_title} - #{a.appointment_date.strftime("%m/%d/%Y")}", show_patient_appointment_path(@patient,a)%> 
+</li>
+<%end%>
+</ul>

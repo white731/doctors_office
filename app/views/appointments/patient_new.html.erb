@@ -1,0 +1,11 @@
+<h1>New Appointment with <%=@patient.full_name%></h1>
+<%= 
+form_with( model: [@patient, @appointment], local:true, class:'ui form') do |f|%>
+<%= f.label :physician%>
+<%= f.select :physician_id, @physicians.collect{ |u| [u.name, u.id]}%>
+<%= f.label :appointment_date%>
+<%= f.date_field :appointment_date, "data-provide" => 'datepicker'%>
+<br />
+<br>
+<%= f.submit nil, class:'ui green button'%>
+<% end %>

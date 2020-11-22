@@ -2,9 +2,13 @@ class AppointmentsController < ApplicationController
 
   def index
     @physician = Physician.find(params[:physician_id])
-    @appointments = @physician.appointments.all
+    @appointments = @physician.appointments.all.sort_by { |a| a.appointment_date }
     @patients = @physician.patients.all
-    
+  end
+
+  def patient_home
+    @patient = Patient.find(params[:patient_id])
+    @appointments = @patient.appointments.all.sort_by { |a| a.appointment_date }
   end
 
   def show
@@ -14,20 +18,42 @@ class AppointmentsController < ApplicationController
     @patient = Patient.find(@appointment.patient.id)
   end
 
+  def patient_show
+    @patient = Patient.find(params[:patient_id])
+    @appointment = @patient.appointments.find(params[:id])
+    @physician = Physician.find(@appointment.physician.id)
+  end
+
   def new
     @physician = Physician.find(params[:physician_id])
     @appointment = Appointment.new()
     @patients = Patient.all
-    
   end
 
+  def patient_new
+    @patient = Patient.find(params[:patient_id])
+    @appointment = Appointment.new()
+    @physicians = Physician.all
+  end
+
+  def patient_create
+    @patient = Patient.find(params[:patient_id])
+    @appointment = @patient.appointments.new(appointment_params)
+    # @physician = Physician.find(@appointment.physician.id)
+    
+    if @appointment.save
+      redirect_to patient_home_path(@patient)
+    else
+      render :new
+    end
+  end
+    
   def create
-    # binding.pry
-    # @patients = Patient.all
     @physician = Physician.find(params[:physician_id])
     @appointment = @physician.appointments.new(appointment_params)
+    
     if @appointment.save
-      redirect_to physician_appointment_path(@physician,@appointment)
+      redirect_to patient_appointment_path(@physician,@appointment)
     else
       render :new
     end

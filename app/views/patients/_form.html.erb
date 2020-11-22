@@ -1,0 +1,25 @@
+<h1><%= @patient.id ? 'Edit Patient' : 'Create Patient' %></h1>
+<h1>Add Patient</h1>
+<%= form_with(model: @patient, local: true, class: "ui form" ) do |f| %>
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, required: true, placeholder: "First Name" %>
+  </div>
+   <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name,required: true, placeholder: "Last Name" %>
+  </div>
+   <div class="field">
+    <%= f.label :age %>
+    <%= f.number_field :age, required: true, placeholder: "Age" %>
+  </div>
+    <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, required: true, placeholder: "Phone #" %>
+  </div>
+    <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email,required: true, placeholder: "Email" %>
+  </div>
+  <%= f.submit nil, class: "ui blue button inverted" %>
+<% end %>

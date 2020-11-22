@@ -1,0 +1,9 @@
+<h1>Appointment with <%=@physician.name%></h1>
+<p><%= link_to "Back to All Appointments", patient_home_path(@patient) %></p>
+<br>
+<p>Full Name: <%=@patient.full_name%></p>
+<p>Age: <%=@patient.age%></p>
+<p>Phone #: <%=@patient.phone%></p>
+<p>Email: <%=@patient.email%></p>
+<p>Appointment Date: <%=@appointment.appointment_date%></p>
+<br>

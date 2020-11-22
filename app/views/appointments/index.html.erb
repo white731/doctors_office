@@ -6,7 +6,7 @@
 
 <% @appointments.each do |a| %>
 <li>
-<%= link_to "#{a.patient.first_name} - #{a.appointment_date}", physician_appointment_path(@physician,a)%> 
+<%= link_to "#{a.patient.first_name} - #{a.appointment_date.strftime("%m/%d/%Y")}", physician_appointment_path(@physician,a)%> 
 </li>
 <%end%>
 </ul>
