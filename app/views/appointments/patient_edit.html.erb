@@ -1,8 +1,8 @@
-<h1>New Appointment for  <%=@patient.full_name%></h1>
+<h1>Edit with <%=@patient.full_name%></h1>
 <p><%= link_to "Back to All Appointments", patient_home_path(@patient) %></p>
 
 <%= 
-form_for [@patient, @appointment], :url => { :action => :patient_create } do |f|%>
+form_for [@patient, @appointment], :url => { :action => :patient_update } do |f|%>
 <%= f.label :physician%>
 <%= f.select :physician_id, @physicians.collect{ |u| [u.name, u.id]}%>
 <%= f.label :appointment_date%>

@@ -1,4 +1,5 @@
-<h1>Appointment with <%=@physician.name%></h1>
+<h1>Appointment<%="for #{@patient.full_name}"%></h1>
+<h4><%="with physician #{@physician.name_title}"%></h4>
 <p><%= link_to "Back to All Appointments", patient_home_path(@patient) %></p>
 <br>
 <p>Full Name: <%=@patient.full_name%></p>
@@ -7,3 +8,5 @@
 <p>Email: <%=@patient.email%></p>
 <p>Appointment Date: <%=@appointment.appointment_date%></p>
 <br>
+<p><%=link_to "Edit Appointment", edit_patient_appointment_custom_path(@patient,@appointment)%>
+<p><%=link_to "Delete Appointment", show_patient_appointment_path(@patient,@appointment), method: :delete%>
